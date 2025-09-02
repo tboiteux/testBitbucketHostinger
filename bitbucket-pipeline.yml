@@ -1,0 +1,19 @@
+image: atlassian/default-image:2
+
+pipelines:
+  default:
+    - step:
+        name: "Déploiement via SSH"
+        script:
+          - pipe: atlassian/ssh-run:0.8.0
+            variables:
+              SSH_USER: $SSH_USER
+              SERVER: $SSH_HOST
+              COMMAND: |
+                echo "Début du déploiement"
+                mkdir -p ~/projet-test
+                exit
+                
+                - echo "Copie des fichiers vers le VPS"
+                - scp -r * $SSH_USER@$SSH_HOST:~/projet-test/
+                - echo "Fichiers copiés avec succès"
