@@ -10,13 +10,13 @@ pipelines:
               SSH_USER: $SSH_USER
               SERVER: $SSH_HOST
               COMMAND: |
-                echo "Début du déploiement"
-                mkdir -p ~/projet-test
-                exit
+                #echo "Début du déploiement"
+                #mkdir -p ~/projet-test
+                #exit
                 
-                - echo "Copie des fichiers vers le VPS"
-                - scp -r * $SSH_USER@$SSH_HOST:~/projet-test/
-                - echo "Fichiers copiés avec succès"
+                #- echo "Copie des fichiers vers le VPS"
+                #- scp -r * $SSH_USER@$SSH_HOST:~/projet-test/
+                "- echo "Fichiers copiés avec succès"
                 
                 #      - echo "Répertoire courant :"
                 #      - pwd
@@ -25,3 +25,10 @@ pipelines:
                 #      - echo "Transfert vers le serveur"
                 #      - scp -v -r * $SSH_USER@$SSH_HOST:/home/<username>/projet-test/
                 #      - echo "Fichiers transférés ?"
+                
+                # Se place dans le bon dossier
+                cd ~/projet-test
+
+                # 1) Récupérer la dernière version
+                git fetch origin main
+                git reset --hard origin/main
