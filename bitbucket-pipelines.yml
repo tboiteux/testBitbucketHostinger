@@ -14,9 +14,7 @@ pipelines:
                 set -e
                 
                 # Se place dans le bon dossier
-                cd ~/projet-test
-                
-                git clone git@bitbucket.org:bcoverycom/testbitbuckethostinger.git
+                cd ~/testbitbuckethostinger
 
                 # 1) Récupérer la dernière version
                 #git fetch origin main
