@@ -17,5 +17,5 @@ pipelines:
                 cd ~/testbitbuckethostinger
 
                 # 1) Récupérer la dernière version
-                #git fetch origin main
-                #git reset --hard origin/main
+                git fetch origin main
+                git reset --hard origin/main
