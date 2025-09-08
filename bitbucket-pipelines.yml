@@ -25,17 +25,17 @@ pipelines:
                 # Générer le tag de l'image
                 GIT_COMMIT_SHORT=$(git rev-parse --short HEAD || echo "invalid-hash")
                 DATE_TAG=$(date +%Y%m%d%H%M%S || echo "no-date")
-                IMAGE_NAME="testbitbuckethostinger"
-                IMAGE_TAG="${DATE_TAG}-${GIT_COMMIT_SHORT}"
-                FULL_IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
+                IMAGE_NAME=testbitbuckethostinger
+                IMAGE_TAG=${DATE_TAG}-${GIT_COMMIT_SHORT}
+                FULL_IMAGE=${IMAGE_NAME}:${IMAGE_TAG}
 
                 # DEBUG : afficher les variables
-                echo "GIT_COMMIT_SHORT=$GIT_COMMIT_SHORT"
-                echo "DATE_TAG=$DATE_TAG"
-                echo "FULL_IMAGE=$FULL_IMAGE"
+                echo GIT_COMMIT_SHORT=$GIT_COMMIT_SHORT
+                echo DATE_TAG=$DATE_TAG
+                echo FULL_IMAGE=$FULL_IMAGE
 
                 # Build Docker
-                docker build -t "$FULL_IMAGE" .
+                docker build -t $FULL_IMAGE .
 
                 # Liste des images Docker disponibles
                 docker images
