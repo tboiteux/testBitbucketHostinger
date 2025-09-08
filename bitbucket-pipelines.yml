@@ -23,13 +23,14 @@ pipelines:
                 # Préparation du build Docker
 
                 # Générer le tag de l'image
-                export GIT_COMMIT_SHORT=$(git rev-parse --short HEAD)
-                export IMAGE_NAME="testbitbuckethostinger"
-                export IMAGE_TAG="${BITBUCKET_BUILD_NUMBER}-${GIT_COMMIT_SHORT}"
-                export FULL_IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
+                GIT_COMMIT_SHORT=$(git rev-parse --short HEAD)
+                DATE_TAG=$(date +%Y%m%d%H%M%S)
+                IMAGE_NAME="testbitbuckethostinger"
+                IMAGE_TAG="${DATE_TAG}-${GIT_COMMIT_SHORT}"
+                FULL_IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
 
-                # Build de l'image Docker locale
-                docker build -t ${FULL_IMAGE} .
+                # Build Docker
+                docker build -t "$FULL_IMAGE" .
 
                 # Liste des images Docker disponibles
                 docker images
