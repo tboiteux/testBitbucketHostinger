@@ -23,8 +23,8 @@ pipelines:
                 # Préparation du build Docker
 
                 # Générer le tag de l'image
-                GIT_COMMIT_SHORT=$(git rev-parse --short HEAD || echo "invalid-hash")
-                DATE_TAG=$(date +%Y%m%d%H%M%S || echo "no-date")
+                GIT_COMMIT_SHORT=$(git rev-parse --short HEAD || echo invalid-hash)
+                DATE_TAG=$(date +%Y%m%d%H%M%S || echo no-date)
                 IMAGE_NAME=testbitbuckethostinger
                 IMAGE_TAG=${DATE_TAG}-${GIT_COMMIT_SHORT}
                 FULL_IMAGE=${IMAGE_NAME}:${IMAGE_TAG}
