@@ -20,16 +20,16 @@ pipelines:
                 git fetch origin main
                 git reset --hard origin/main
                 
-                - echo "Préparation du build Docker"
+                echo "Préparation du build Docker"
 
-                - echo "Générer le tag de l'image"
-                - export GIT_COMMIT_SHORT=$(git rev-parse --short HEAD)
-                - export IMAGE_NAME="testbitbuckethostinger"
-                - export IMAGE_TAG="${BITBUCKET_BUILD_NUMBER}-${GIT_COMMIT_SHORT}"
-                - export FULL_IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
+                echo "Générer le tag de l'image"
+                export GIT_COMMIT_SHORT=$(git rev-parse --short HEAD)
+                export IMAGE_NAME="testbitbuckethostinger"
+                export IMAGE_TAG="${BITBUCKET_BUILD_NUMBER}-${GIT_COMMIT_SHORT}"
+                export FULL_IMAGE="${IMAGE_NAME}:${IMAGE_TAG}"
 
-                - echo "Build de l'image Docker locale"
-                - docker build -t ${FULL_IMAGE} .
+                echo "Build de l'image Docker locale"
+                docker build -t ${FULL_IMAGE} .
 
-                - echo "Liste des images Docker disponibles"
-                - docker images
+                echo "Liste des images Docker disponibles"
+                docker images
