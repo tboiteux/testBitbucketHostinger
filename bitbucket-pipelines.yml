@@ -21,7 +21,7 @@ pipelines:
                 git reset --hard origin/main
                 
                 # Préparation du build Docker
-                docker compose up -d --build
+                docker compose -f docker-compose.yaml up -d --build
 
 #                # Générer le tag de l'image
 #                GIT_COMMIT_SHORT=$(git rev-parse --short HEAD || echo invalid-hash)
